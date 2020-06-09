@@ -1,5 +1,5 @@
-const config = require('./config.js')
-const store = require('./store.js')
+const config = require('./../config.js')
+const store = require('./../store.js')
 const signUp = function (data) {
   return $.ajax({
     method: 'POST',
@@ -25,7 +25,7 @@ const signIn = function (data) {
     }
   })
 }
-const changePw = function (data) {
+const changePassword = function (data) {
   return $.ajax({
     method: 'PATCH',
     url: config.apiUrl + '/change-password',
@@ -52,6 +52,6 @@ const signOut = function () {
 module.exports = {
   signUp,
   signIn,
-  changePw,
+  changePassword,
   signOut
 }

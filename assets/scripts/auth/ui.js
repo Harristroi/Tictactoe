@@ -1,74 +1,58 @@
 
-const store = require('./store')
-const signUpSuccess = function (response) {
+const store = require('./../store')
+
+const onSignUpSuccess = function (response) {
   console.log(response)
   $('form').trigger('reset')
-  $('#sign-up-content').text('Sign up complete ' + response.user.email)
-  $('#sign-up-content').show()
+  $('#message').text('Sign up complete ' + response.user.email)
+  $('#message').show()
 }
-const signUpFailure = function () {
+const onSignUpFailure = function () {
   $('form').trigger('reset')
-  $('#sign-up-content').text('Sign up failed')
-  $('#sign-up-content').show()
+  $('#message').text('Sign up failed')
+  $('#message').show()
 }
-const signInSuccess = function (response) {
+const onSignInSuccess = function (response) {
   $('form').trigger('reset')
-  $('#sign-up-content').text('Signed in ' + response.user.email)
-  $('#sign-up-content').show()
-  $('.hidden').removeClass()
-  $('.show').hide()
+  $('#message').text('Signed in ' + response.user.email)
+  $('#message').show()
   $('#play-game').show()
+  console.log(response)
   store.user = response.user
 }
-const signInFailure = function (response) {
+const onSignInFailure = function (response) {
   $('form').trigger('reset')
-  $('#sign-up-content').text('Signed in failed')
-  $('#sign-up-content').show()
+  $('#message').text('Signed in failed')
+  $('#message').show()
 }
-const changePwSuccess = function () {
+const onSignOutSuccess = function (response) {
   $('form').trigger('reset')
-  $('#change-pw').text('Password changed successfully')
-  $('#change-pw').removeClass()
-  $('#change-pw').addClass('success')
+  $('#message').text('Sign Out Completed')
+  $('#message').show()
 }
-const changePwFailure = function () {
+const onSignOutFailure = function (response) {
   $('form').trigger('reset')
-  $('#change-pw').text('Password change failed')
-  $('#change-pw').removeClass()
-  $('#change-pw').addClass('failure')
+  $('#message').text('Sign Out Not Completed')
+  $('#message').show()
 }
-const signOutSuccess = function () {
-  $('#sign-out').text('You are now signed out. Please sign in again to play.')
-  $('#sign-out').removeClass()
-  $('#sign-out').addClass('success')
-  $('#new-game').addClass('hidden')
-  $('#change-pw').addClass('hidden')
-  $('.show').show()
-  $('#play-game').hide()
-  store.user = null
+const onChangePasswordSuccess = function (response) {
+  $('form').trigger('reset')
+  $('#message').text('Password has been Changed')
+  $('#message').show()
+}
+const onChangePasswordFailure = function (response) {
+  $('form').trigger('reset')
+  $('#message').text('Password change failed')
+  $('#message').show()
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports {
-  onSignUpSuccess: onSignUpSuccess
-  onSignUpFailure: onSignUpFailure
-  onSignInSuccess: onSignInSuccess
-  onSignInFailure: onSignInFailure
+module.exports = {
+  onSignUpSuccess: onSignUpSuccess,
+  onSignUpFailure: onSignUpFailure,
+  onSignInSuccess: onSignInSuccess,
+  onSignInFailure: onSignInFailure,
+  onSignOutSuccess: onSignOutSuccess,
+  onSignOutFailure: onSignOutFailure,
+  onChangePasswordSuccess: onChangePasswordSuccess,
+  onChangePasswordFailure: onChangePasswordFailure
 }

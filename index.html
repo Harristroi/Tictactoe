@@ -12,7 +12,7 @@
 
     </head>
     <body>
-        <p id="messasge"></p>
+        <p id="message"></p>
 
         <section class="search">
           <p class="first-p"><strong>Sign Up Here</strong></p>
@@ -28,6 +28,18 @@
           <input required placeholder="Email" name="credentials[email]" type="email">
           <input required placeholder="Password" name="credentials[password]" type="password">
           <button type="submit">Sign In</button>
+        </form>
+
+          <form id="sign-out">
+            <button type="submit">Sign Out</button>
+          </form>
+
+<p class="third-p">Change Your Password</p>
+        <form id="change-password">
+<input required placeholder="Email" name="credentials[email]" type="email">
+<input required placeholder="Old Password" name="passwords[old]" type="password">
+<input name="passwords[new]" type="password" placeholder="New Password">
+<button type="submit">Change</button>
         </form>
       </section>
 <section class="pic">
