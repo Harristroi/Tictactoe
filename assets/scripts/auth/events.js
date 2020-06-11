@@ -44,6 +44,12 @@ const onChangePassword = function (event) {
 
 const onClick = function (event) {
   const index = event.target.dataset.cellIndex
+  const player = turn ? 'X' : 'O'
+  const data = {
+    number: index,
+    letter: player,
+    place: false
+  }
   if (turn) {
     event.target.innerHTML = 'X'
     turn = false
@@ -51,6 +57,11 @@ const onClick = function (event) {
     event.target.innerHTML = 'O'
     turn = true
   }
+  $('#message').text(`It is ${player} turn.`)
+  $('#message').show()
+  api.updateGame(data)
+    .then(ui.onUpdateSuccess)
+    .catch(ui.onUpdateFailure)
 }
 
 const onStartNewGame = function (event) {

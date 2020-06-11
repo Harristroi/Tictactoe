@@ -54,7 +54,7 @@ const signOut = function () {
 const updateGame = function (data) {
   return $.ajax({
     method: 'PATCH',
-    url: config.apiUrl + '/games/' + data.id,
+    url: config.apiUrl + '/games/' + store.game._id,
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
@@ -80,10 +80,10 @@ const createGame = function () {
   })
 }
 
-const deleteGame = function (data) {
+const deleteGame = function () {
   return $.ajax({
     method: 'DELETE',
-    url: config.apiUrl + '/games/',
+    url: config.apiUrl + '/games/' + store.game._id,
     headers: {
       Authorization: 'Token token=' + store.user.token
     }

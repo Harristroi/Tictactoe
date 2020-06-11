@@ -28,8 +28,10 @@ input {
   text-align: right;
 }
 
-.container {
-  display: table;
+.pic {
+  background-image: url('public/King.jpeg');
+  background-repeat: no-repeat;
+  background-size: auto;
 }
 
 button {
@@ -37,13 +39,12 @@ border-style: dashed;
 }
 
 .square {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     background-color: black;
     color: white;
-    margin: 0;
-    border-bottom: solid 10px white;
-    display: inline-table;
+    margin: 10px;
+    display: none;
   }
   .square:hover {
     background: linear-gradient(gray, gold, white);

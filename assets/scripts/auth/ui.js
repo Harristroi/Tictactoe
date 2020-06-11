@@ -73,6 +73,17 @@ const onDeleteGameFailure = function (response) {
   $('#message').text('Delete game failed')
   $('#message').show()
 }
+const onUpdateSuccess = function (response) {
+  $('form').trigger('reset')
+  $('#message').text('Game updated')
+  $('#message').show()
+}
+const onUpdateFailure = function (reponse) {
+  $('form').trigger('reset')
+  $('#message').text('Game not updated')
+  $('#message').show()
+}
+
 module.exports = {
   onSignUpSuccess: onSignUpSuccess,
   onSignUpFailure: onSignUpFailure,
@@ -85,5 +96,7 @@ module.exports = {
   onCreateSuccess: onCreateSuccess,
   onCreateFailure: onCreateFailure,
   onDeleteGameSuccess,
-  onDeleteGameFailure
+  onDeleteGameFailure,
+  onUpdateSuccess,
+  onUpdateFailure
 }
