@@ -1,5 +1,6 @@
 const config = require('./../config.js')
 const store = require('./../store.js')
+
 const signUp = function (data) {
   return $.ajax({
     method: 'POST',
@@ -49,9 +50,51 @@ const signOut = function () {
     }
   })
 }
+
+const updateGame = function (data) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + data.id,
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: data.number,
+          value: data.letter
+        },
+        over: data.place
+      }
+    }
+  })
+}
+
+const createGame = function () {
+  return $.ajax({
+    method: 'POST',
+    url: config.apiUrl + '/games/',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const deleteGame = function (data) {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/games/',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  updateGame,
+  createGame,
+  deleteGame
 }

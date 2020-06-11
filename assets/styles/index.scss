@@ -1,43 +1,50 @@
 @import '~bootstrap/scss/bootstrap';
 
-.container {
-  width: 320px;
-  height: 320px;
-margin: auto;
-margin-top: 100px;
-}
 h1 {
+  font-family: elephant;
+  color: lightGrey;
   text-align: center;
   font-size: 45px;
+  padding: 20px;
 }
-.row {
-  height: 100px;
-}
-.col {
-  height: 100px;
-  width: 100px;
-  float: left;
-  font-size: 100px;
-  text-align: center;
-  line-height: 100px;
-}
-.col:hover {
-  filter: brightness(70%);
-  background-color: lightBlue;
-}
-.border-b {
-  border-bottom: solid 10px gold;
-}
-.border-right {
-border-right: solid 10px gold;
-}
-section {
+body {
   background-color: #800020;
+  font-style: italic;
 }
+
+input {
+  font-style: italic;
+}
+
 .search {
   text-align: right;
+  border: solid 10px gold;
+  border-radius: 10px 15px 10px 15px;
+  background-color: beige;
+  display: inline-flex;
 }
-.first-p {
-  font-size: 20px;
-  font-family: fantasy;
+
+#deletegame {
+  text-align: right;
 }
+
+.container {
+  display: table;
+}
+
+button {
+border-style: dashed;
+}
+
+.square {
+    width: 150px;
+    height: 150px;
+    background-color: black;
+    color: white;
+    margin: 0;
+    border-bottom: solid 10px white;
+    display: inline-table;
+  }
+  .square:hover {
+    background: linear-gradient(gray, gold, white);
+  }

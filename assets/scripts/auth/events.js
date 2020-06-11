@@ -1,6 +1,7 @@
 const getFormFields = require('./../../../lib/get-form-fields.js')
 const api = require('./api')
 const ui = require('./ui')
+let turn = true
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -41,9 +42,38 @@ const onChangePassword = function (event) {
     .catch(ui.onChangePasswordFailure)
 }
 
+const onClick = function (event) {
+  const index = event.target.dataset.cellIndex
+  if (turn) {
+    event.target.innerHTML = 'X'
+    turn = false
+  } else {
+    event.target.innerHTML = 'O'
+    turn = true
+  }
+}
+
+const onStartNewGame = function (event) {
+  event.preventDefault()
+  // v Making an API call
+  api.createGame()
+    .then(ui.onCreateSuccess)
+    .catch(ui.onCreateFailure)
+}
+
+const onDeleteGame = function (event) {
+  event.preventDefault()
+  api.deleteGame()
+    .then(ui.onDeleteGameSuccess)
+    .catch(ui.onDeleteGameFailure)
+}
+
 module.exports = {
   onSignUp: onSignUp,
   onSignIn: onSignIn,
   onSignOut: onSignOut,
-  onChangePassword: onChangePassword
+  onChangePassword: onChangePassword,
+  onClick: onClick,
+  onStartNewGame,
+  onDeleteGame
 }
